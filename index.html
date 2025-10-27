@@ -120,8 +120,8 @@ aside.filters{background:var(--card);border-radius:var(--radius);box-shadow:var(
         <h1>Banden voor uw auto</h1>
         <p>Ontdek onze uitgebreide collectie hoogwaardige banden voor alle automerken. Van Porsche en BMW tot Mercedes en Audi - wij hebben de juiste banden voor uw auto. Alle prijzen op aanvraag via offerte.</p>
         <div class="cta">
-            <button class="btn" onclick="openModal()">Offerte Aanvragen</button>
-            <button class="btn secondary">Werkplaatsafspraak</button>
+            <button class="btn" onclick="window.open('tel:0153618555', '_self')">Offerte Aanvragen</button>
+            <button class="btn secondary" onclick="window.open('https://planner.garage.software/#/afspraken/4353343532313033/stap1', '_blank')">Werkplaatsafspraak</button>
         </div>
     </header>
 
@@ -529,7 +529,7 @@ function renderProducts() {
                     <div>${product.season === 'all-season' ? 'All-season' : product.season.charAt(0).toUpperCase() + product.season.slice(1)}${product.season === 'winter' ? ' ❄️' : ''} • Prijs op aanvraag</div>
                 </div>
                 <div class="actions">
-                    <button class="btn" onclick="event.stopPropagation(); addToQuote(${product.id})">Offerte</button>
+                    <button class="btn" onclick="event.stopPropagation(); window.open('tel:0153618555', '_self')">Offerte</button>
                     <button class="btn secondary" onclick="event.stopPropagation(); showProductDetail(${product.id})">Details</button>
                 </div>
             </div>
@@ -568,7 +568,7 @@ function showProductDetail(productId) {
                 </ul>
                 
                 <div class="actions">
-                    <button class="btn" onclick="addToQuote(${product.id})">Offerte Aanvragen</button>
+                    <button class="btn" onclick="window.open('tel:0153618555', '_self')">Offerte Aanvragen</button>
                     <button class="btn secondary" onclick="goBack()">Terug naar overzicht</button>
                 </div>
             </div>
