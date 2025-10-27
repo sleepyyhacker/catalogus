@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Banden voor uw auto — Haaglanden Motorsport Catalogus</title>
+<base href="https://www.haaglandenmotorsport.nl/media/Wielen/">
+<style>
+:root {
+--accent: #d32f2f; /* Haaglanden Motorsport rood */
+--primary: #1976d2; /* Porsche blauw accent */
+--bg: #f8f9fa;
+--text: #212529;
+--muted: #6c757d;
+--card: #ffffff;
+--radius: 8px;
+--shadow: 0 2px 8px rgba(0,0,0,.1);
+--border: #e9ecef;
+}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;color:var(--text);background:var(--bg)}
+.container{max-width:1200px;margin:0 auto;padding:20px}
+
+header.hero{background:linear-gradient(135deg,#1a1a1a 0%,#2d2d2d 100%);color:#fff;border-radius:var(--radius);padding:32px;box-shadow:var(--shadow);position:relative;overflow:hidden;border:1px solid var(--border)}
+.hero h1{margin:0 0 12px;font-size:2.2rem;font-weight:700;letter-spacing:-0.02em}
+.hero p{margin:0;color:#e0e0e0;font-size:1.1rem;line-height:1.5}
+.hero .cta{margin-top:24px}
+.btn{display:inline-flex;gap:.5rem;align-items:center;border-radius:6px;padding:12px 20px;border:1px solid transparent;background:var(--accent);color:#fff;font-weight:600;text-decoration:none;cursor:pointer;font-size:14px;transition:all 0.2s ease}
+.btn.secondary{background:transparent;border-color:#666;color:#666}
+.btn:hover{opacity:0.9;transform:translateY(-1px);box-shadow:0 4px 12px rgba(211,47,47,0.3)}
+.btn.secondary:hover{background:rgba(255,255,255,0.1)}
+
+.grid{display:grid;gap:16px}
+@media (min-width: 900px){
+.grid.filters{grid-template-columns: 260px 1fr}
+.grid.cards{grid-template-columns: repeat(3, 1fr)}
+}
+
+aside.filters{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px;border:1px solid var(--border)}
+.filters h3{margin-top:0;font-size:1.2rem;font-weight:600;color:var(--text);margin-bottom:16px}
+.filter-group{margin:16px 0}
+.filter-group label{display:block;font-size:.9rem;margin:6px 0;color:var(--text);font-weight:500}
+.filter-group input,.filter-group select{width:100%;padding:12px;border:1px solid var(--border);border-radius:6px;background:#fff;font-size:14px;transition:border-color 0.2s}
+.filter-group input:focus,.filter-group select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 2px rgba(211,47,47,0.1)}
+
+.toolbar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin:16px 0;padding:16px;background:var(--card);border-radius:var(--radius);border:1px solid var(--border)}
+.search{flex:1;display:flex;gap:8px}
+.search input{flex:1;padding:12px;border-radius:6px;border:1px solid var(--border);font-size:14px;transition:border-color 0.2s}
+.search input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 2px rgba(211,47,47,0.1)}
+.sort select{padding:12px;border-radius:6px;border:1px solid var(--border);background:#fff;font-size:14px;transition:border-color 0.2s}
+.sort select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 2px rgba(211,47,47,0.1)}
+
+.card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column;transition:all 0.3s ease;border:1px solid var(--border)}
+.card:hover{transform:translateY(-4px);box-shadow:0 8px 25px rgba(0,0,0,0.15)}
+.card img{width:100%;height:200px;object-fit:cover;background:#f5f5f5}
+.card .pad{padding:20px}
+.badge{display:inline-block;padding:6px 12px;border-radius:20px;background:var(--accent);color:#fff;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.5px}
+.badge.winter{background:linear-gradient(135deg,#4a90e2 0%,#357abd 100%);position:relative;box-shadow:0 2px 8px rgba(74,144,226,0.3)}
+.badge.winter::after{content:"❄️";margin-left:4px;font-size:10px}
+.card.winter{border-left:4px solid #4a90e2}
+.card.winter:hover{box-shadow:0 8px 25px rgba(74,144,226,0.2)}
+.meta{color:var(--muted);font-size:.9rem;line-height:1.4}
+.actions{margin-top:16px;display:flex;gap:8px}
+
+/* Product detail */
+.product-layout{display:grid;gap:24px}
+@media (min-width: 900px){
+.product-layout{grid-template-columns: 1.2fr 1fr}
+}
+.gallery{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:12px}
+.gallery .heroimg{width:100%;height:360px;object-fit:cover;border-radius:12px;background:#eaeaea}
+.thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px}
+.thumbs img{width:100%;height:72px;object-fit:cover;border-radius:8px;background:#eaeaea;cursor:pointer;transition:all 0.2s;border:2px solid transparent}
+.thumbs img:hover{opacity:0.8;border-color:var(--accent)}
+.thumbs img.active{border-color:var(--accent);opacity:1}
+
+.product-panel{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
+.product-panel h2{margin-top:0}
+.list{margin:10px 0 0;padding:0;list-style:none}
+.list li{padding:6px 0;border-bottom:1px solid #f1f1f1}
+
+/* Modal (Offerte aanvragen) */
+.modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.5);padding:20px;z-index:1000}
+.modal.open{display:flex}
+.dialog{background:#fff;max-width:640px;width:100%;border-radius:16px;box-shadow:var(--shadow)}
+.dialog header{padding:16px 18px;border-bottom:1px solid #eee;display:flex;align-items:center;justify-content:space-between}
+.dialog header h3{margin:0}
+.dialog .content{padding:18px}
+.dialog .footer{padding:16px 18px;border-top:1px solid #eee;display:flex;gap:10px;justify-content:flex-end}
+
+.close{background:none;border:none;font-size:24px;cursor:pointer;color:#666}
+.close:hover{color:#000}
+
+.form-group{margin:12px 0}
+.form-group label{display:block;margin:4px 0;font-weight:500}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:10px;border:1px solid #ddd;border-radius:8px;font-size:14px}
+.form-group textarea{height:80px;resize:vertical}
+
+.hidden{display:none}
+
+/* Loading state */
+.loading{opacity:0.6;pointer-events:none}
+
+/* Responsive adjustments */
+@media (max-width: 768px){
+.container{padding:16px}
+.hero{padding:20px}
+.hero h1{font-size:1.5rem}
+.grid.cards{grid-template-columns: 1fr}
+.toolbar{flex-direction:column;align-items:stretch}
+.search{flex-direction:column}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <h1>Banden voor uw auto</h1>
+        <p>Ontdek onze uitgebreide collectie hoogwaardige banden voor alle automerken. Van Porsche en BMW tot Mercedes en Audi - wij hebben de juiste banden voor uw auto. Alle prijzen op aanvraag via offerte.</p>
+        <div class="cta">
+            <button class="btn" onclick="openModal()">Offerte Aanvragen</button>
+            <button class="btn secondary">Werkplaatsafspraak</button>
+        </div>
+    </header>
+
+    <!-- Filters and Products -->
+    <div class="grid filters">
+        <aside class="filters">
+            <h3>Filters</h3>
+            
+            <div class="filter-group">
+                <label>Porsche Model</label>
+                <select id="modelFilter">
+                    <option value="">Alle modellen</option>
+                    <option value="911-991">911-991</option>
+                    <option value="911-993">911-993</option>
+                    <option value="911-997">911-997</option>
+                    <option value="718">718 (Boxster/Cayman)</option>
+                    <option value="Macan">Macan</option>
+                    <option value="Panamera">Panamera</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label>Seizoen</label>
+                <select id="seasonFilter">
+                    <option value="">Alle seizoenen</option>
+                    <option value="summer">Zomer</option>
+                    <option value="winter">Winter</option>
+                    <option value="all-season">All-season</option>
+                </select>
+            </div>
+
+
+            <div class="filter-group">
+                <label>Diameter</label>
+                <select id="diameterFilter">
+                    <option value="">Alle diameters</option>
+                    <option value="17">17 inch</option>
+                    <option value="18">18 inch</option>
+                    <option value="19">19 inch</option>
+                    <option value="20">20 inch</option>
+                    <option value="21">21 inch</option>
+                </select>
+            </div>
+        </aside>
+
+        <main>
+            <!-- Toolbar -->
+            <div class="toolbar">
+                <div class="search">
+                    <input type="text" id="searchInput" placeholder="Zoek banden..." />
+                </div>
+                <div class="sort">
+                <select id="sortSelect">
+                    <option value="name">Sorteer op naam</option>
+                    <option value="model">Sorteer op model</option>
+                    <option value="diameter">Sorteer op diameter</option>
+                    <option value="season">Sorteer op seizoen</option>
+                </select>
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="grid cards" id="productsGrid">
+                <!-- Products will be dynamically loaded here -->
+            </div>
+        </main>
+    </div>
+</div>
+
+<!-- Modal for Quote Request -->
+<div class="modal" id="quoteModal">
+    <div class="dialog">
+        <header>
+            <h3>Offerte Aanvragen</h3>
+            <button class="close" onclick="closeModal()">&times;</button>
+        </header>
+        <div class="content">
+            <form id="quoteForm">
+                <div class="form-group">
+                    <label for="customerName">Naam *</label>
+                    <input type="text" id="customerName" required>
+                </div>
+                <div class="form-group">
+                    <label for="customerEmail">E-mail *</label>
+                    <input type="email" id="customerEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="customerPhone">Telefoon</label>
+                    <input type="tel" id="customerPhone">
+                </div>
+                <div class="form-group">
+                    <label for="porscheModel">Porsche Model</label>
+                    <select id="porscheModel">
+                        <option value="">Selecteer model</option>
+                        <option value="911">911</option>
+                        <option value="718">718</option>
+                        <option value="Taycan">Taycan</option>
+                        <option value="Macan">Macan</option>
+                        <option value="Cayenne">Cayenne</option>
+                        <option value="Panamera">Panamera</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="tireSize">Bandenmaat</label>
+                    <input type="text" id="tireSize" placeholder="bijv. 225/45 R17">
+                </div>
+                <div class="form-group">
+                    <label for="message">Bericht</label>
+                    <textarea id="message" placeholder="Vertel ons meer over uw wensen..."></textarea>
+                </div>
+            </form>
+        </div>
+        <div class="footer">
+            <button class="btn secondary" onclick="closeModal()">Annuleren</button>
+            <button class="btn" onclick="submitQuote()">Verstuur Aanvraag</button>
+        </div>
+    </div>
+</div>
+
+<script>
+// Sample product data
+const products = [
+    // Porsche 911-991 19 inch zomer
+    {
+        id: 1,
+        name: "Porsche 911-991 19 inch Zomer Set",
+        brand: "porsche",
+        carBrand: "porsche",
+        season: "summer",
+        application: "sport",
+        diameter: 19,
+        model: "911-991",
+        image: "911-991_19_inch_zomer.jpg",
+        images: [
+            "911-991_19_inch_zomer.jpg",
+            "911-991_19inch_zomer.jpg"
+        ],
+        description: "Complete wielen en bandenset voor Porsche 911-991, 19 inch zomerbanden"
+    },
+    // Porsche 911-991 20 inch zomer
+    {
+        id: 2,
+        name: "Porsche 911-991 20 inch Zomer Set",
+        brand: "porsche",
+        carBrand: "porsche",
+        season: "summer",
+        application: "sport",
+        diameter: 20,
+        model: "911-991",
+        image: "911-991_20_inch_zomer.jpg",
+        images: [
+            "911-991_20_inch_zomer.jpg",
+            "911-991_20inch_zomer.jpg"
+        ],
+        description: "Complete wielen en bandenset voor Porsche 911-991, 20 inch zomerbanden"
+    },
+    // Porsche 911-993 18 inch zomer
+    {
+        id: 3,
+        name: "Porsche 911-993 18 inch Zomer Set",
+        brand: "porsche",
+        carBrand: "porsche",
+        season: "summer",
+        application: "sport",
+        diameter: 18,
+        model: "911-993",
+        image: "911-993_18_inch_zomer.jpg",
+        images: [
+            "911-993_18_inch_zomer.jpg",
+            "911-993_18inch_zomer.jpg"
+        ],
+        description: "Complete wielen en bandenset voor Porsche 911-993, 18 inch zomerbanden"
+    },
+    // Porsche 911-997 18 inch winter
+    {
+        id: 4,
+        name: "Porsche 911-997 18 inch Winter Set",
+        brand: "porsche",
+        carBrand: "porsche",
+        season: "winter",
+        application: "winter",
+        diameter: 18,
+        model: "911-997",
+        image: "911-997_18_inch_winter.jpg",
+        images: [
+            "911-997_18_inch_winter.jpg",
+            "911-997_18inch_winter.jpg"
+        ],
+        description: "Complete wielen en bandenset voor Porsche 911-997, 18 inch winterbanden"
+    },
+    // Porsche 911-997 19 inch zomer
+    {
+        id: 5,
+        name: "Porsche 911-997 19 inch Zomer Set",
+        brand: "porsche",
+        carBrand: "porsche",
+        season: "summer",
+        application: "sport",
+        diameter: 19,
+        model: "911-997",
+        image: "911-997_19_inch_zomer.jpg",
+        images: [
+            "911-997_19_inch_zomer.jpg",
+            "911-997-_19_inch_zomer.jpg"
+        ],
+        description: "Complete wielen en bandenset voor Porsche 911-997, 19 inch zomerbanden"
+    },
+    // Boxster Cayman 718 20 inch winter
+    {
+        id: 6,
+        name: "Porsche Boxster/Cayman 718 20 inch Winter Set",
+        brand: "porsche",
+        carBrand: "porsche",
+        season: "winter",
+        application: "winter",
+        diameter: 20,
+        model: "718",
+        image: "Boxster_Cayman_718_20_inch_winter.jpg",
+        images: [
+            "Boxster_Cayman_718_20_inch_winter.jpg",
+            "Boxster_Cayman_718_20inch_winter.jpg"
+        ],
+        description: "Complete wielen en bandenset voor Porsche Boxster/Cayman 718, 20 inch winterbanden"
+    },
+    // Macan 20 inch winter breedset
+    {
+        id: 7,
+        name: "Porsche Macan 20 inch Winter Breedset",
+        brand: "porsche",
+        carBrand: "porsche",
+        season: "winter",
+        application: "winter",
+        diameter: 20,
+        model: "Macan",
+        image: "Macan_20_inch_winter_breedset.jpg",
+        images: [
+            "Macan_20_inch_winter_breedset.jpg",
+            "Macan_20inch_winter_breedset.jpg"
+        ],
+        description: "Complete wielen en bandenset voor Porsche Macan, 20 inch winterbanden breedset"
+    },
+    // Panamera 20 inch winter
+    {
+        id: 8,
+        name: "Porsche Panamera 20 inch Winter Set",
+        brand: "porsche",
+        carBrand: "porsche",
+        season: "winter",
+        application: "winter",
+        diameter: 20,
+        model: "Panamera",
+        image: "Panamera_20_inch_winter.jpg",
+        images: [
+            "Panamera_20_inch_winter.jpg",
+            "Panamera_20-inch_winter.jpg",
+            "Panamera_20inch_winter.jpg"
+        ],
+        description: "Complete wielen en bandenset voor Porsche Panamera, 20 inch winterbanden"
+    },
+    // Panamera 19 inch winter (extra set)
+    {
+        id: 9,
+        name: "Porsche Panamera 19 inch Winter Set",
+        brand: "porsche",
+        carBrand: "porsche",
+        season: "winter",
+        application: "winter",
+        diameter: 19,
+        model: "Panamera",
+        image: "20250917_144653.jpg",
+        images: [
+            "20250917_144653.jpg",
+            "20250917_144732.jpg",
+            "20250917_144910.jpg",
+            "20250917_144956.jpg",
+            "20250917_155332.jpg",
+            "20250917_160005.jpg",
+            "20250917_160211.jpg",
+            "20250917_160317.jpg"
+        ],
+        description: "Complete wielen en bandenset voor Porsche Panamera, 19 inch winterbanden"
+    },
+    // Panamera 21 inch winter (extra set)
+    {
+        id: 10,
+        name: "Porsche Panamera 21 inch Winter Set",
+        brand: "porsche",
+        carBrand: "porsche",
+        season: "winter",
+        application: "winter",
+        diameter: 21,
+        model: "Panamera",
+        image: "20250924_132304.jpg",
+        images: [
+            "20250924_132304.jpg",
+            "20250924_132321.jpg",
+            "20250924_132449.jpg",
+            "20250924_132924.jpg",
+            "20250924_132937.jpg"
+        ],
+        description: "Complete wielen en bandenset voor Porsche Panamera, 21 inch winterbanden"
+    }
+];
+
+let filteredProducts = [...products];
+
+// Initialize the page
+document.addEventListener('DOMContentLoaded', function() {
+    renderProducts();
+    setupEventListeners();
+});
+
+function setupEventListeners() {
+    // Remove existing listeners first
+    const searchInput = document.getElementById('searchInput');
+    const modelFilter = document.getElementById('modelFilter');
+    const seasonFilter = document.getElementById('seasonFilter');
+    const diameterFilter = document.getElementById('diameterFilter');
+    const sortSelect = document.getElementById('sortSelect');
+    
+    // Only add listeners if elements exist
+    if (searchInput) {
+        searchInput.removeEventListener('input', filterProducts);
+        searchInput.addEventListener('input', filterProducts);
+    }
+    
+    if (modelFilter) {
+        modelFilter.removeEventListener('change', filterProducts);
+        modelFilter.addEventListener('change', filterProducts);
+    }
+    
+    if (seasonFilter) {
+        seasonFilter.removeEventListener('change', filterProducts);
+        seasonFilter.addEventListener('change', filterProducts);
+    }
+    
+    if (diameterFilter) {
+        diameterFilter.removeEventListener('change', filterProducts);
+        diameterFilter.addEventListener('change', filterProducts);
+    }
+    
+    if (sortSelect) {
+        sortSelect.removeEventListener('change', sortProducts);
+        sortSelect.addEventListener('change', sortProducts);
+    }
+}
+
+function filterProducts() {
+    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+    const modelFilter = document.getElementById('modelFilter').value;
+    const seasonFilter = document.getElementById('seasonFilter').value;
+    const diameterFilter = document.getElementById('diameterFilter').value;
+
+    filteredProducts = products.filter(product => {
+        const matchesSearch = product.name.toLowerCase().includes(searchTerm) || 
+                            product.description.toLowerCase().includes(searchTerm);
+        const matchesModel = !modelFilter || product.model === modelFilter;
+        const matchesSeason = !seasonFilter || product.season === seasonFilter;
+        const matchesDiameter = !diameterFilter || product.diameter.toString() === diameterFilter;
+        
+        return matchesSearch && matchesModel && matchesSeason && matchesDiameter;
+    });
+    
+    renderProducts();
+}
+
+function sortProducts() {
+    const sortBy = document.getElementById('sortSelect').value;
+    
+    filteredProducts.sort((a, b) => {
+        switch(sortBy) {
+            case 'name':
+                return a.name.localeCompare(b.name);
+            case 'model':
+                return a.model.localeCompare(b.model);
+            case 'diameter':
+                return a.diameter - b.diameter;
+            case 'season':
+                return a.season.localeCompare(b.season);
+            default:
+                return 0;
+        }
+    });
+    
+    renderProducts();
+}
+
+function renderProducts() {
+    const grid = document.getElementById('productsGrid');
+    
+    if (filteredProducts.length === 0) {
+        grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--muted);">Geen producten gevonden die voldoen aan de criteria.</div>';
+        return;
+    }
+    
+    grid.innerHTML = filteredProducts.map(product => `
+        <div class="card ${product.season === 'winter' ? 'winter' : ''}" onclick="showProductDetail(${product.id})">
+            <img src="${encodeURI(product.image)}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/300x200/333/fff?text='+encodeURIComponent('${product.name}')" />
+            <div class="pad">
+                <div class="badge ${product.season === 'winter' ? 'winter' : ''}">${product.brand.charAt(0).toUpperCase() + product.brand.slice(1)}</div>
+                <h3 style="margin: 8px 0;">${product.name}</h3>
+                <p class="meta">${product.description}</p>
+                <div class="meta">
+                    <div>${product.carBrand.charAt(0).toUpperCase() + product.carBrand.slice(1)}${product.model ? ' • ' + product.model : ''} • ${product.diameter}" diameter</div>
+                    <div>${product.season === 'all-season' ? 'All-season' : product.season.charAt(0).toUpperCase() + product.season.slice(1)}${product.season === 'winter' ? ' ❄️' : ''} • Prijs op aanvraag</div>
+                </div>
+                <div class="actions">
+                    <button class="btn" onclick="event.stopPropagation(); addToQuote(${product.id})">Offerte</button>
+                    <button class="btn secondary" onclick="event.stopPropagation(); showProductDetail(${product.id})">Details</button>
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
+function showProductDetail(productId) {
+    const product = products.find(p => p.id === productId);
+    if (!product) return;
+    
+    // Create product detail view
+    const detailHTML = `
+        <div class="product-layout">
+            <div class="gallery">
+                <img src="${encodeURI(product.image)}" alt="${product.name}" class="heroimg" onerror="this.src='https://via.placeholder.com/300x200/333/fff?text=' + encodeURIComponent('${product.name}')" />
+                <div class="thumbs">
+                    ${product.images ? product.images.map((img, index) => 
+                        `<img src="${encodeURI(img)}" alt="Thumbnail ${index + 1}" onerror="this.style.display='none'" onclick="document.querySelector('.heroimg').src='${encodeURI(img)}'" class="${img === product.image ? 'active' : ''}" />`
+                    ).join('') : ''}
+                </div>
+            </div>
+            <div class="product-panel">
+                <h2>${product.name}</h2>
+                <div class="meta">${product.carBrand.charAt(0).toUpperCase() + product.carBrand.slice(1)} • Prijs op aanvraag</div>
+                <p>${product.description}</p>
+                
+                <h3>Specificaties</h3>
+                <ul class="list">
+                    <li>Bandenmerk: ${product.brand.charAt(0).toUpperCase() + product.brand.slice(1)}</li>
+                    <li>Automerk: ${product.carBrand.charAt(0).toUpperCase() + product.carBrand.slice(1)}</li>
+                    ${product.model ? `<li>Model: ${product.model}</li>` : ''}
+                    <li>Seizoen: ${product.season === 'all-season' ? 'All-season' : product.season.charAt(0).toUpperCase() + product.season.slice(1)}${product.season === 'winter' ? ' ❄️' : ''}</li>
+                    <li>Diameter: ${product.diameter} inch</li>
+                    <li>Prijs: Op aanvraag</li>
+                </ul>
+                
+                <div class="actions">
+                    <button class="btn" onclick="addToQuote(${product.id})">Offerte Aanvragen</button>
+                    <button class="btn secondary" onclick="goBack()">Terug naar overzicht</button>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    // Replace main content with product detail
+    const main = document.querySelector('main');
+    main.innerHTML = detailHTML;
+}
+
+function goBack() {
+    // Restore the main catalog view
+    const main = document.querySelector('main');
+    main.innerHTML = `
+        <!-- Toolbar -->
+        <div class="toolbar">
+            <div class="search">
+                <input type="text" id="searchInput" placeholder="Zoek banden..." />
+            </div>
+            <div class="sort">
+                <select id="sortSelect">
+                    <option value="name">Sorteer op naam</option>
+                    <option value="model">Sorteer op model</option>
+                    <option value="diameter">Sorteer op diameter</option>
+                    <option value="season">Sorteer op seizoen</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Products Grid -->
+        <div class="grid cards" id="productsGrid">
+            <!-- Products will be dynamically loaded here -->
+        </div>
+    `;
+    
+    // Force re-setup of event listeners
+    setupEventListeners();
+    renderProducts();
+}
+
+function addToQuote(productId) {
+    const product = products.find(p => p.id === productId);
+    if (product) {
+        // Store selected product for quote
+        sessionStorage.setItem('selectedProduct', JSON.stringify(product));
+        openModal();
+    }
+}
+
+function openModal() {
+    document.getElementById('quoteModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+    document.getElementById('quoteModal').classList.remove('open');
+    document.body.style.overflow = 'auto';
+}
+
+function submitQuote() {
+    const form = document.getElementById('quoteForm');
+    const formData = new FormData(form);
+    
+    // Basic validation
+    const name = document.getElementById('customerName').value;
+    const email = document.getElementById('customerEmail').value;
+    
+    if (!name || !email) {
+        alert('Vul tenminste naam en e-mail in.');
+        return;
+    }
+    
+    // Show success message
+    alert('Uw offerte aanvraag is verzonden! We nemen zo snel mogelijk contact met u op.');
+    
+    // Close modal and reset form
+    closeModal();
+    form.reset();
+}
+
+// Close modal when clicking outside
+document.getElementById('quoteModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeModal();
+    }
+});
+
+// Close modal with Escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeModal();
+    }
+});
+</script>
+</body>
+</html>
